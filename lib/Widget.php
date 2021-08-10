@@ -20,13 +20,13 @@ class Widget {
 		return $this->tag;
 	}
 
-	public function setAttributes(array $attributes) {
+	public function setAttributes(array $attributes): self {
 		foreach($attributes as $name => $value)
 			$this->setAttribute($name, $value);
 		return $this;
 	}
 
-	public function setAttribute(string $name, string $value) {
+	public function setAttribute(string $name, string $value): self {
 		$this->valid_name($name);
 		$this->attributes[$name] = $value;
 		return $this;
@@ -36,7 +36,7 @@ class Widget {
 		return $this->attributes;
 	}
 
-	public function attribute(string $name): string {
+	public function attribute(string $name): ?string {
 		return $this->attributes[$name] ?? null;
 	}
 
