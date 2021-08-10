@@ -23,18 +23,20 @@ class Widget {
 	public function setAttributes(array $attributes) {
 		foreach($attributes as $name => $value)
 			$this->setAttribute($name, $value);
+		return $this;
 	}
 
-	public function setAttribute(string $name, mixed $value) {
+	public function setAttribute(string $name, string $value) {
 		$this->valid_name($name);
 		$this->attributes[$name] = $value;
+		return $this;
 	}
 
 	public function attributes(): array {
 		return $this->attributes;
 	}
 
-	public function attribute(string $name): mixed {
+	public function attribute(string $name): string {
 		return $this->attributes[$name] ?? null;
 	}
 
