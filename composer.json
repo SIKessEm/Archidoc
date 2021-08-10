@@ -1,0 +1,38 @@
+{
+    "name": "sikessem/archidoc",
+    "description": "The architect of web documents using various components",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/SIKessEm/Archidoc#readme",
+    "keywords": [
+        "sikessem",
+        "archidoc"
+    ],
+    "authors": [{
+        "homepage": "https://sikessem.com",
+        "name": "SIGUI kessé Emmanuel",
+        "email": "contact@sikessem.com",
+        "role": "Developer"
+    }],
+    "support": {
+        "source": "https://github.com/SIKessEm/Archidoc",
+        "issues": "https://github.com/SIKessEm/Archidoc/issues"
+    },
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload": {
+        "files": [
+            "ext/archidoc.php"
+        ],
+        "psr-4": {
+          "Archidoc\\": "lib/"
+        }
+    },
+    "config": {
+        "vendor-dir": "pkg",
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
