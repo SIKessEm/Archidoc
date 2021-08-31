@@ -41,10 +41,10 @@ class Widget {
 	}
 
 	protected function valid_name(string $name): void {
-		if(empty($tag)) 
-			throw Error('Empty tag given', Error::EMPTY_VALUE);
+		if(empty($name)) 
+			throw new Error('Empty name given', Error::EMPTY_VALUE);
 
-		if(!preg_match('/^[^0-9[^a-zA-Z-]]+[\w-]*$/', $tag))
-			throw Error("Invalid tag ($tag) given". Error::INVALID_VALUE);
+		if(!preg_match('/^[a-zA-Z]+([\w-]+[a-zA-Z]+)*$/', $name))
+			throw new Error("Invalid name ($name) given". Error::INVALID_VALUE);
 	}
 }
