@@ -9,6 +9,6 @@ class Filter {
 
 	static function validate(string $id): bool {
 		
-		return !empty($id) && preg_match('/^[^0-9[^a-zA-Z-]]+[\w-]*$/', $id);
+		return !empty($id) && (bool) preg_match('/^[a-zA-Z]+([\w-]+[a-zA-Z]+)*$/', $id);
 	}
 }
