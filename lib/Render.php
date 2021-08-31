@@ -2,7 +2,7 @@
 
 class Render {
 
-	public function __construct(protected string $content) {}
+	public function __construct(protected ?string $content = null) {}
 	
 	protected string $tag = '';
 
@@ -28,5 +28,25 @@ class Render {
 	public function uses(Action $action) {
 		$this->events[$action->event()][] = $action->callback();
 		return $this;
+	}
+
+	public function __toString(): string {
+		
+		$view = "<$this->tag";
+		
+		$style = '';
+		foreach ($this->properties as $rule => $properties)
+			foreach($properties as $prop_name => $prop_value)
+				$style .= "$prop_name:$prop_value;";
+		
+		if(!empty($style))
+			$this->attributes['style'] = $style;
+
+		foreach($this->attributes as $attr_name => $attr_value)
+			$view .= " $attr_name='$attr_value'";
+		
+		$view .= isset($this->content) ? ">$this->content</$this->tag>" : '/>';
+
+		return $view;
 	}
 }
