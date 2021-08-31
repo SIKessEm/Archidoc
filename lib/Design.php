@@ -27,8 +27,9 @@ class Design {
 	}
 
 	public function setProperty(string $name, $value): self {
-		$this->valid_name($name);
-		$this->properties[$name] = $value;
+		if(!Filter::validate($name))
+			throw new Error('Invalid property name given', Error::INVALID_PROPERTY_NAME);
+		$this->properties[Filter::sanitize($name)] = $value;
 		return $this;
 	}
 
@@ -38,13 +39,5 @@ class Design {
 
 	public function property(string $name): ?string {
 		return $this->properties[$name] ?? null;
-	}
-
-	protected function valid_name(string $name): void {
-		if(empty($tag)) 
-			throw Error('Empty tag given', Error::EMPTY_VALUE);
-
-		if(!preg_match('/^[^0-9[^a-zA-Z-]]+[\w-]*$/', $tag))
-			throw Error("Invalid tag ($tag) given". Error::INVALID_VALUE);
 	}
 }
