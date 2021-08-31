@@ -1,4 +1,4 @@
-<?php namespace Archidoc;
+<?php namespace SIKessEm\Archidoc;
 
 class Filter {
 

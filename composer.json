@@ -25,7 +25,7 @@
             "ext/archidoc.php"
         ],
         "psr-4": {
-          "Archidoc\\": "lib/"
+          "SIKessEm\\Archidoc\\": "lib/"
         }
     },
     "config": {
