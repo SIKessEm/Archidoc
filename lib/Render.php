@@ -20,12 +20,13 @@ class Render {
 
 	public function has(Design $design) {
 		$rule = $design->rule();
-		foreach($this->$widget->properties() as $name => $value)
-			$this->$properties[$rule][$name] = $value;
+		foreach($design->properties() as $name => $value)
+			$this->properties[$rule][$name] = $value;
 		return $this;
 	}
 
 	public function uses(Action $action) {
 		$this->events[$action->event()][] = $action->callback();
+		return $this;
 	}
 }
