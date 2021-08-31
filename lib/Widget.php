@@ -12,8 +12,9 @@ class Widget {
 	}
 
 	public function setTag(string $tag) {
-		$this->valid_name($tag);
-		$this->tag = $tag;
+		if(!Filter::validate($tag))
+			throw new Error("Invalid tag name given $tag", Error::INVALID_NAME);
+		$this->tag = Filter::sanitize($tag);
 	}
 
 	public function tag(): string {
@@ -27,8 +28,9 @@ class Widget {
 	}
 
 	public function setAttribute(string $name, string $value): self {
-		$this->valid_name($name);
-		$this->attributes[$name] = $value;
+		if(!Filter::validate($name))
+			throw new Error("Invalid attribute name given $name". Error::INVALID_NAME);
+		$this->attributes[Filter::sanitize($name)] = $value;
 		return $this;
 	}
 
@@ -38,13 +40,5 @@ class Widget {
 
 	public function attribute(string $name): ?string {
 		return $this->attributes[$name] ?? null;
-	}
-
-	protected function valid_name(string $name): void {
-		if(empty($name)) 
-			throw new Error('Empty name given', Error::EMPTY_VALUE);
-
-		if(!preg_match('/^[a-zA-Z]+([\w-]+[a-zA-Z]+)*$/', $name))
-			throw new Error("Invalid name ($name) given". Error::INVALID_VALUE);
 	}
 }

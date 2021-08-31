@@ -2,7 +2,7 @@
 
 class Filter {
 
-	static function satitize(string $id): string {
+	static function sanitize(string $id): string {
 		
 		return strtolower(trim($id));
 	}
